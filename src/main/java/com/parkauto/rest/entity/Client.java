@@ -2,6 +2,8 @@ package com.parkauto.rest.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "CLIENTS")
 public class Client {
@@ -34,19 +36,23 @@ public class Client {
     @JoinColumn(name = "vehicule_id")
     private Vehicule vehicule;
 
+    @OneToMany(mappedBy = "client")
+    private List<Commande> commandeList;
+
     public Client() {
         super();
     }
 
-    public Client(Long idClient, Vehicule vehicule, String pays, String ville, String codePostal, String adresse, String prenom, String nom) {
+    public Client(Long idClient, String nom, String prenom, String adresse, String codePostal, String ville, String pays, Vehicule vehicule, List<Commande> commandeList) {
         this.idClient = idClient;
-        this.vehicule = vehicule;
-        this.pays = pays;
-        this.ville = ville;
-        this.codePostal = codePostal;
-        this.adresse = adresse;
-        this.prenom = prenom;
         this.nom = nom;
+        this.prenom = prenom;
+        this.adresse = adresse;
+        this.codePostal = codePostal;
+        this.ville = ville;
+        this.pays = pays;
+        this.vehicule = vehicule;
+        this.commandeList = commandeList;
     }
 
     public Vehicule getVehicule() {
@@ -113,4 +119,11 @@ public class Client {
         this.pays = pays;
     }
 
+    public List<Commande> getCommandeList() {
+        return commandeList;
+    }
+
+    public void setCommandeList(List<Commande> commandeList) {
+        this.commandeList = commandeList;
+    }
 }
