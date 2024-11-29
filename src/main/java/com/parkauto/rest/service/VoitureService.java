@@ -28,4 +28,18 @@ public class VoitureService {
     public void  deleteVoiture(Voiture voiture) {
         voitureRepository.delete(voiture);
     }
+
+    public void updateVoiture (Long idvoiture, Voiture voiture) {
+        Voiture existingVoiture = voitureRepository.findById(idvoiture).orElseThrow(() -> new RuntimeException("Voiture not found"));
+        existingVoiture.setImmatriculation(voiture.getImmatriculation());
+        existingVoiture.setPuisanceFiscale(voiture.getPuisanceFiscale());
+        existingVoiture.setCategorie(voiture.getCategorie());
+        existingVoiture.setNbPortes(voiture.getNbPortes());
+        existingVoiture.setPoidsTotal(voiture.getPoidsTotal());
+        existingVoiture.setMedia(voiture.getMedia());
+        existingVoiture.setPrix(voiture.getPrix());
+        existingVoiture.setAnneeModel(voiture.getAnneeModel());
+
+        voitureRepository.save(existingVoiture);
+    }
 }

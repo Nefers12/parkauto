@@ -51,4 +51,20 @@ public class VoitureController {
         voitureService.deleteVoiture(voiture);
         return ResponseEntity.ok().body(voiture);
     }
+
+    @PutMapping("/voitures/{idVoiture}")
+    public ResponseEntity<?> updateVoiture(@PathVariable(name = "idVoiture") Long idVoiture, @RequestBody Voiture voiture) {
+        if(idVoiture == null) {
+            return ResponseEntity.badRequest().body("Cannot update voiture with null id");
+        }
+        Voiture existingVoiture = voitureService.getVoitureById(idVoiture);
+        if(existingVoiture == null) {
+            return ResponseEntity.notFound().build();
+        }
+        voitureService.updateVoiture(idVoiture, voiture);
+        return ResponseEntity.ok().body(existingVoiture);
+    }
+
 }
+
+

@@ -28,4 +28,5 @@ public class VehiculeService {
     public void  deleteVehicule(Vehicule vehicule) {
         vehiculeRepository.delete(vehicule);
     }
+
 }
