@@ -20,13 +20,17 @@ public class Vehicule implements Serializable {
     @Column(name = "PRIX")
     private double prix;
 
+    @Column(name = "IMAGE")
+    private String image;
+
     public Vehicule() {
     }
 
-    public Vehicule(Long matricule, int anneeModel, double prix) {
+    public Vehicule(Long matricule, int anneeModel, double prix, String image) {
         this.matricule = matricule;
         this.anneeModel = anneeModel;
         this.prix = prix;
+        this.image = image;
     }
 
     public Long getMatricule() {
@@ -51,6 +55,14 @@ public class Vehicule implements Serializable {
 
     public void setPrix(double prix) {
         this.prix = prix;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     @Override

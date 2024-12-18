@@ -17,17 +17,17 @@ public class VehiculeController {
     @Autowired
     VehiculeService vehiculeService;
 
-    @PostMapping("/vehicule")
+    @PostMapping("/vehicules")
     public Vehicule Vehicule(@Validated @RequestBody(required = false) Vehicule vehicule) {
         return vehiculeService.saveVehicule(vehicule);
     }
 
-    @GetMapping("/vehicule")
+    @GetMapping("/vehicules")
     public List<Vehicule> getAllVehicules() {
         return vehiculeService.getAllVehicules();
     }
 
-    @GetMapping("/vehicule/{idVehicule}")
+    @GetMapping("/vehicules/{idVehicule}")
     public ResponseEntity<?> findVehiculeById(@PathVariable(name = "idVehicule") Long idVehicule) {
         if(idVehicule == null) {
             return ResponseEntity.badRequest().body("Cannot find vehicule with null id");
@@ -39,7 +39,7 @@ public class VehiculeController {
         return ResponseEntity.ok(vehicule);
     }
 
-    @DeleteMapping("/vehicule/{idVehicule}")
+    @DeleteMapping("/vehicules/{idVehicule}")
     public ResponseEntity<?> deleteVehiculeById(@PathVariable(name = "idVehicule") Long idVehicule) {
         if(idVehicule == null) {
             return ResponseEntity.badRequest().body("Cannot delete vehicule with null id");

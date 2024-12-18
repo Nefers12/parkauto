@@ -8,7 +8,6 @@ import java.util.List;
 @Table(name = "COMMANDE")
 public class Commande {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "IDCOMMANDE")

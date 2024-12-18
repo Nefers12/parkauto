@@ -20,7 +20,7 @@ public class Camion extends Vehicule{
     public Camion() {
     }
 
-    public Camion(Long matricule, int anneeModel, double prix) {
-        super(matricule, anneeModel, prix);
+    public Camion(Long matricule, int anneeModel, double prix, String image) {
+        super(matricule, anneeModel, prix, image);
     }
 }
